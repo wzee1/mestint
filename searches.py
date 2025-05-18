@@ -1,41 +1,57 @@
+class Node:
+    # Tartalmaz egy állapotot és egy szülőt
+    def __init__(self, state, parent=None):
+        self.state = state
+        self.parent = parent
+
+    # Megadja, hogy milyen 1 lépésből meglátogható csomópontok vannak
+    def expand(self, problem):
+        li = []
+        for act in problem.actions(self.state):
+            li.append(Node(problem.result(self.state, act), self))
+        return li
+
+
 def search(problem, is_depth_first=False, graph_search=False):
-    # 1. node: (allapot, szulo)
-    initial_node = (problem.initial, None)
-    # felfedezere varo allapotok
+    initial_node = Node(problem.initial)
     frontier = [initial_node]
-    # eddig bejart
-    search_path = []
-    # felfedezett node-ok (grafkereseshez)
-    explored = set()
+    search_path = []    # Csomópontok útvonala
+    explored = set()    # Gráfkereséshez
 
-    # addig fut a loop, amig el nem erunk a felfedezendo node-ok vegere
-    while frontier:
-        # kovetkezo allapot kivalasztasa, attol fuggoen
-        # hogy milyen keresest csinalunk
-        if is_depth_first:  # LIFO, depth-first
-            current_state, parent = frontier.pop()
-        else:   # FIFO, breadth-first
-            current_state, parent = frontier.pop(0)
+    while frontier:     # addig megyünk, míg vannak csomópontok
+        if is_depth_first:
+            selected_node = frontier.pop()  #LIFO
+        else:
+            selected_node = frontier.pop(0) #FIFO
 
-        # aktualis allapot hozzafuzese a bejart uthoz
-        search_path.append((current_state, parent))
+        search_path.append(selected_node)
 
-        # ha elerjuk a celallapotot:
-        if problem.goal_test(current_state):
+        if problem.goal_test(selected_node.state):
             print('GOAL!')
-            return (current_state, parent), search_path
+            return selected_node, search_path
 
-        # grafkeresesnel a felfedezett allapotok rogzitese itt:
         if graph_search:
-            explored.add(current_state)
+            explored.add(selected_node.state)
 
-        for action, next_state in problem.next_state(current_state):
-            # ha nem grafkereses, akkor ez fix lefut
-            # ha grafos, akkor a kovetkezo state-nek nem szabad az eddig felfedezettben lennie
-            if not graph_search or (
-                next_state not in explored and next_state not in [state for state, parent in frontier]
-            ):
-                frontier.append((next_state, (current_state, action)))
+        children = selected_node.expand(problem)
+        for child in children:
+            if not graph_search or child.state not in explored:
+                # Elkerüljük a duplikátumokat a frontier-ben is gráfkeresésnél
+                if child not in frontier:
+                    frontier.append(child)
 
     print('Unsolvable')
     return None, None
+
+
+def breadth_first_tree_search(problem):
+    return search(problem, is_depth_first=False, graph_search=False)
+
+def breadth_first_graph_search(problem):
+    return search(problem, is_depth_first=False, graph_search=True)
+
+def depth_first_tree_search(problem):
+    return search(problem, is_depth_first=True, graph_search=False)
+
+def depth_first_graph_search(problem):
+    return search(problem, is_depth_first=True, graph_search=True)
