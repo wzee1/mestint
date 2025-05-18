@@ -12,10 +12,10 @@ def search(problem, is_depth_first=False, graph_search=False):
     while frontier:
         # kovetkezo allapot kivalasztasa, attol fuggoen
         # hogy milyen keresest csinalunk
-        if is_depth_first:  # FIFO, depth-first
-            current_state, parent = frontier.pop(0)
-        else:   # LIFO, width-first
+        if is_depth_first:  # LIFO, depth-first
             current_state, parent = frontier.pop()
+        else:   # FIFO, breadth-first
+            current_state, parent = frontier.pop(0)
 
         # aktualis allapot hozzafuzese a bejart uthoz
         search_path.append((current_state, parent))
@@ -32,7 +32,9 @@ def search(problem, is_depth_first=False, graph_search=False):
         for action, next_state in problem.next_state(current_state):
             # ha nem grafkereses, akkor ez fix lefut
             # ha grafos, akkor a kovetkezo state-nek nem szabad az eddig felfedezettben lennie
-            if not graph_search or next_state not in explored:
+            if not graph_search or (
+                next_state not in explored and next_state not in [state for state, parent in frontier]
+            ):
                 frontier.append((next_state, (current_state, action)))
 
     print('Unsolvable')
