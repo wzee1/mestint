@@ -1,3 +1,13 @@
+## Minimax algoritmus:
+
+Egy **rekurzív döntési algoritmus**, amelyet tipikusan **két személyes, nulla összegű játékokban**\
+(pl. sakk, tic-tac-toe) használnak. Célja, hogy megtalálja az egyik játékos (a **maximalizáló**)\
+optimális lépését feltételezve, hogy a másik játékos (a **minimalizáló**) is optimálisan játszik\
+a saját szempontjából. Az algoritmus a játékfa összes lehetséges lépését és azok kimenetelét értékeli,\
+és a maximalizáló a számára legkedvezőbb kimenetelt biztosító lépést választja.
+
+---
+
 ## Alpha-béta nyesés:
 
 Egy optimalizációs technika a **minimax algoritmushoz**.\
@@ -14,18 +24,6 @@ Biztosítja, hogy egy változó tartományának minden értéke konzisztens legy
 értékkel a szomszédos változók tartományában az adott korlátozás szempontjából.\
 Az "AC" az "Arc Consistency" (ívkonzisztencia) rövidítése, az "1" pedig a konzisztencia\
 egy bizonyos szintjére utal.
-
----
-
-## Minimax algoritmus:
-
-Egy **rekurzív döntési algoritmus**, amelyet tipikusan **két személyes, nulla összegű játékokban**\
-(pl. sakk, tic-tac-toe) használnak. Célja, hogy megtalálja az egyik játékos (a **maximalizáló**)\
-optimális lépését feltételezve, hogy a másik játékos (a **minimalizáló**) is optimálisan játszik\
-a saját szempontjából. Az algoritmus a játékfa összes lehetséges lépését és azok kimenetelét értékeli,\
-és a maximalizáló a számára legkedvezőbb kimenetelt biztosító lépést választja.
-
-Íme a kért fogalmak rövid és érthető leírása:
 
 ---
 
