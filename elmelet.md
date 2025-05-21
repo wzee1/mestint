@@ -27,8 +27,6 @@ Már vannak AC-3, AC-4 stb.. algoritmusok is, amelyek hatékonyabbak.
 
 ---
 
----
-
 ## A* kereső algoritmus
 
 Az **A\* (ejtsd: A-csillag) kereső algoritmus** egy **informált gráfkereső** algoritmus, ami a legrövidebb utat találja meg egy kezdőponttól egy célpontig. Két tényező kombinációjával becsüli meg az egyes lépések "jóságát":
