@@ -19,13 +19,6 @@ amelyekről bebizonyosodik, hogy nem befolyásolhatják a legjobb lépést.
 
 ## AC-1 algoritmus:
 
-Rendben, elnézést kérek! Félreértettem a "könnyen érthető" kérést, és túlmagyaráztam.
-Most megpróbálom pontosan a kért formában, tömören és érthetően, példák nélkül átfogalmazni.
-
----
-
-**AC-1 algoritmus:**
-
 Egy **korlátozás-kielégítési probléma (CSP)** előfeldolgozására szolgáló **konzisztencia-ellenőrző algoritmus**. Célja, hogy **leszűkítse a változók (pl. input listák) lehetséges értékeit (tartományait, azaz az input listák egyes értékeit)**, kizárva azokat, amelyek biztosan nem vezetnek megoldáshoz.
 
 Úgy működik, hogy **ismételten ellenőrzi**, hogy minden változó tartományának minden értéke **összeegyeztethető-e** legalább egy értékkel a szomszédos változók tartományában, az adott korlátozás (azaz vannak feltételek, amiket teljesítenie kell az összes input lista összes elemének) alapján. Ha egy érték nem konzisztens, azt törli.
