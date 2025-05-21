@@ -57,9 +57,9 @@ Az A\* mindig azt a csomópontot választja ki a felfedezésre várók közül, 
 
 ## Naiv Bayes (Naive Bayes)
 
-A **Naiv Bayes osztályozó** egy **felügyelt gépi tanulási algoritmus**, amelyet **klasszifikációs** (besorolási) feladatokra használnak. A **Bayes-tétel** alapul, de egy "naiv" feltételezéssel él:
-* Azt feltételezi, hogy az összes bemeneti **jellemző (attribútum) egymástól független**, *feltéve* az osztálykategóriát. Például, ha egy e-mail spam-e (osztály) alapján ítélünk, a "kupon" szó előfordulása független attól, hogy a "nyertes" szó is benne van, ha tudjuk, hogy az e-mail spam.
-Bár ez a függetlenségi feltételezés a valóságban ritkán igaz, az algoritmus meglepően jól teljesít sok feladatban, különösen szöveges adatok (pl. spamszűrés, érzelem-elemzés) esetén, mert egyszerű, gyors és hatékony.
+A Naiv Bayes osztályozó egy **felügyelt gépi tanulási algoritmus**, melynek célja **adatok kategóriákba sorolása (klasszifikáció)**. Működése a **Bayes-tételen** alapszik, amelynek segítségével **egy elem kategóriába tartozására vonatkozó kezdeti valószínűséget frissíti** a megfigyelt jellemzők (attribútumok) fényében.
+
+Az algoritmus "naiv" elnevezése onnan ered, hogy **egyszerűsíti a valóságot**: feltételezi, hogy egy elem összes tulajdonsága (jellemzője) **teljesen független egymástól**, amennyiben már tudjuk, melyik kategóriába tartozik az elem. Bár ez a feltételezés ritkán igaz, a Naiv Bayes mégis meglepően **jól teljesít** számos feladatban, különösen **szöveges adatok besorolásánál**, köszönhetően egyszerűségének, gyorsaságának és robusztusságának.
 
 ---
 
